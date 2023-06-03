@@ -3,7 +3,13 @@ const router = express.Router();
 const User = require("../models/user");
 
 router.post("/users", (req, res) => {
-  const newUser = User(req.body);
+  const { name, country } = req.body;
+
+  const newUser = new User({
+    name,
+    country,
+  });
+
   newUser
     .save()
     .then(() => res.json({ message: "user created successfully " }))
