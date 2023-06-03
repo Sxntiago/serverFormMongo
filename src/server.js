@@ -4,9 +4,11 @@ const app = express();
 const port = 3000;
 const initDB = require("./config/db");
 const userRoutes = require("./routes/user.router");
+const cors = require("cors");
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use("/api", userRoutes);
 

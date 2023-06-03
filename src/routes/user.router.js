@@ -10,9 +10,14 @@ router.post("/users", (req, res) => {
     country,
   });
 
+  console.log(newUser);
+
   newUser
     .save()
-    .then(() => res.json({ message: "user created successfully " }))
+    .then(
+      (res) => res.json({ message: "user created successfully " }),
+      console.log(res)
+    )
     .catch((err) => res.status(400).json({ error: "error creating new user" }));
 });
 
